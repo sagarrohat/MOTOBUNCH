@@ -316,7 +316,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
 
 
-                    mDriverMarker = mMap.addMarker(new MarkerOptions().position(driverLatLng).title("your Mechanic").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_mechanic)));
+                    mDriverMarker = mMap.addMarker(new MarkerOptions().position(driverLatLng).title("your Mechanic").icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_car)));
                 }
 
             }
@@ -549,7 +549,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
                 LatLng driverLocation = new LatLng(location.latitude, location.longitude);
 
-                Marker mDriverMarker = mMap.addMarker(new MarkerOptions().position(driverLocation).title(key).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_mechanic)));
+                Marker mDriverMarker = mMap.addMarker(new MarkerOptions().position(driverLocation).title(key).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_car)));
                 mDriverMarker.setTag(key);
 
                 markers.add(mDriverMarker);
