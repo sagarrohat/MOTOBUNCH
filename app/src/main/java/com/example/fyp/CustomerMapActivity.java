@@ -75,7 +75,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
     private SupportMapFragment mapFragment;
 
-    private String destination, requestService;
+    private String destination;
 
     private LatLng destinationLatLng;
 
@@ -84,8 +84,6 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
     private ImageView mDriverProfileImage;
 
     private TextView mDriverName, mDriverPhone, mDriverCar;
-
-    private RadioGroup mRadioGroup;
 
     private RatingBar mRatingBar;
 
@@ -112,9 +110,6 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
         mRatingBar = (RatingBar) findViewById(R.id.ratingBar);
 
-        mRadioGroup = (RadioGroup) findViewById(R.id.radioGroup);
-        mRadioGroup.check(R.id.UberX);
-
         mLogout = (Button) findViewById(R.id.logout);
         mRequest = (Button) findViewById(R.id.request);
         mSettings = (Button) findViewById(R.id.settings);
@@ -137,18 +132,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
                 if (requestBol){
                     endRide();
-
-
                 }else{
-                    int selectId = mRadioGroup.getCheckedRadioButtonId();
-
-                    final RadioButton radioButton = (RadioButton) findViewById(selectId);
-
-                    if (radioButton.getText() == null){
-                        return;
-                    }
-
-                    requestService = radioButton.getText().toString();
 
                     requestBol = true;
 
@@ -229,25 +213,22 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                                 if (driverFound){
                                     return;
                                 }
+                                driverFound = true;
+                                driverFoundID = dataSnapshot.getKey();
 
-                                if(driverMap.get("service").equals(requestService)){
-                                    driverFound = true;
-                                    driverFoundID = dataSnapshot.getKey();
+                                DatabaseReference driverRef = FirebaseDatabase.getInstance("https://fyp125-c4c0e-default-rtdb.firebaseio.com/").getReference().child("Users").child("Drivers").child(driverFoundID).child("customerRequest");
+                                String customerId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                HashMap map = new HashMap();
+                                map.put("customerRideId", customerId);
+                                map.put("destination", destination);
+                                map.put("destinationLat", destinationLatLng.latitude);
+                                map.put("destinationLng", destinationLatLng.longitude);
+                                driverRef.updateChildren(map);
 
-                                    DatabaseReference driverRef = FirebaseDatabase.getInstance("https://fyp125-c4c0e-default-rtdb.firebaseio.com/").getReference().child("Users").child("Drivers").child(driverFoundID).child("customerRequest");
-                                    String customerId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                                    HashMap map = new HashMap();
-                                    map.put("customerRideId", customerId);
-                                    map.put("destination", destination);
-                                    map.put("destinationLat", destinationLatLng.latitude);
-                                    map.put("destinationLng", destinationLatLng.longitude);
-                                    driverRef.updateChildren(map);
-
-                                    getDriverLocation();
-                                    getDriverInfo();
-                                    getHasRideEnded();
-                                    mRequest.setText("Looking for Driver Location....");
-                                }
+                                getDriverLocation();
+                                getDriverInfo();
+                                getHasRideEnded();
+                                mRequest.setText("Looking for Driver Location....");
                             }
                         }
                         @Override
