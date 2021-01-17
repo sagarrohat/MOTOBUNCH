@@ -4,9 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/login"
+    android:gravity="center"
     tools:context="com.example.fyp.DriverLoginActivity"
     android:orientation="vertical">
     <EditText
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="email"
@@ -20,10 +23,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="login"
+        android:background="#000000"
+        android:backgroundTint="#000000"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:id="@+id/login"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="registration"
+        android:background="#000000"
+        android:backgroundTint="#000000"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:id="@+id/registration"/>
 </LinearLayout>

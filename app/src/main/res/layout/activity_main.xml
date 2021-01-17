@@ -4,18 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:gravity="center"
     tools:context="com.example.fyp.MainActivity"
     android:orientation="vertical">
 
 
     <Button
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#000000"
+        android:backgroundTint="#000000"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:text="I'm a Driver"
         android:id="@+id/driver"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#000000"
+        android:backgroundTint="#000000"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
         android:text="I'm a Customer"
         android:id="@+id/customer"/>
 
