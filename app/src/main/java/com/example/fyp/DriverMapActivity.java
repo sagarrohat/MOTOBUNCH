@@ -135,7 +135,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
                         if(destinationLatLng.latitude!=0.0 && destinationLatLng.longitude!=0.0){
                             getRouteToMarker(destinationLatLng);
                         }
-                        mRideStatus.setText("drive completed");
+                        mRideStatus.setText("Work completed");
 
                         break;
                     case 2:

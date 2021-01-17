@@ -20,7 +20,7 @@
         android:textSize="18sp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:text="I'm a Driver"
+        android:text="I'm a Mechanic"
         android:id="@+id/driver"/>
     <Button
         android:layout_width="match_parent"

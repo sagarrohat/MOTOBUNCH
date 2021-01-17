@@ -145,7 +145,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                     pickupLocation = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
                     pickupMarker = mMap.addMarker(new MarkerOptions().position(pickupLocation).title("Pickup Here").icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_pickup)));
 
-                    mRequest.setText("Getting your Driver....");
+                    mRequest.setText("Getting your Mechanic....");
 
                     getClosestDriver();
                 }
@@ -228,7 +228,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                                 getDriverLocation();
                                 getDriverInfo();
                                 getHasRideEnded();
-                                mRequest.setText("Looking for Driver Location....");
+                                mRequest.setText("Looking for Mechanic Location....");
                             }
                         }
                         @Override
@@ -309,14 +309,14 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                     float distance = loc1.distanceTo(loc2);
 
                     if (distance<100){
-                        mRequest.setText("Driver's Here");
+                        mRequest.setText("Mechanic's Here");
                     }else{
-                        mRequest.setText("Driver Found: " + String.valueOf(distance));
+                        mRequest.setText("Mechanic Found: " + String.valueOf(distance));
                     }
 
 
 
-                    mDriverMarker = mMap.addMarker(new MarkerOptions().position(driverLatLng).title("your driver").icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_car)));
+                    mDriverMarker = mMap.addMarker(new MarkerOptions().position(driverLatLng).title("your Mechanic").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_baseline_build_24)));
                 }
 
             }
@@ -418,7 +418,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         if (mDriverMarker != null){
             mDriverMarker.remove();
         }
-        mRequest.setText("call Uber");
+        mRequest.setText("call Mechanic");
 
         mDriverInfo.setVisibility(View.GONE);
         mDriverName.setText("");
@@ -549,7 +549,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
                 LatLng driverLocation = new LatLng(location.latitude, location.longitude);
 
-                Marker mDriverMarker = mMap.addMarker(new MarkerOptions().position(driverLocation).title(key).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_car)));
+                Marker mDriverMarker = mMap.addMarker(new MarkerOptions().position(driverLocation).title(key).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_baseline_build_24)));
                 mDriverMarker.setTag(key);
 
                 markers.add(mDriverMarker);
